@@ -1,5 +1,7 @@
 # BF Component 1 - Getting input from user (what component they would like to play with)
 
+result = ""
+
 
 # Functions goes here...
 def choice_checker(question):
@@ -11,16 +13,16 @@ def choice_checker(question):
         response = input(question)
 
         if response == "1":
-            print("You chose + ")
+            result == "+"
             continue
         elif response == "2":
-            print("You chose - ")
+            result == "-"
             continue
         elif response == "3":
-            print("You chose x ")
+            result == "x"
             continue
         elif response == "4":
-            print("You chose ÷ ")
+            result == "÷"
             continue
         else:
             print("Please choose a number between 1-4")
@@ -39,3 +41,5 @@ user_choice = choice_checker("Choose 1 for ' + '\n"
                              "Choose 4 for ' ÷ '\n"
                              "\n"
                              "= ")
+
+print("You chose {}".format(result))
