@@ -1,80 +1,56 @@
- # BF Component 2 - Computer generates random questions based on chosen generator
-# Version 1
+# BF Component 2 - Computer generates random questions based on chosen generator
 
-from random import randint
+import random
 
 # values
-num_1 = ""
-num_2 = ""
+
 
 # functions
-def addition():
 
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
-
-    print(f"What is {num_1} + {num_2} ?")
-    choice = (input("= "))
-
-    if int(choice) == num_1 + num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 + num_2}")
-
-def subtraction():
-
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
-
-    print(f"What is {num_1} - {num_2} ?")
-    choice = (input("= "))
-
-    if int(choice) == num_1 - num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 - num_2}")
-
-def multiplication():
-
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
-
-    print(f"What is {num_1} x {num_2} ?")
-    choice = (input("= "))
-
-    if int(choice) == num_1 * num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 * num_2}")
-
-def division():
-
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
-
-    print(f"What is {num_1} / {num_2} ?")
-    choice = (input("= "))
-
-    if int(choice) == num_1 / num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 / num_2}")
 
 # main routine
 choice = input("Which one would you like to play with?\n"
-"A - Addition\n"
-"S - Subtraction\n"
-"M - Multiplication\n"
-"D - Division\n"
-"= ")
+               "A - Addition\n"
+               "S - Subtraction\n"
+               "M - Multiplication\n"
+               "D - Division\n"
+               "= ")
 
+# associate user choice with correct sign
 if choice == "a":
-  addition()
+    choice = "+"
+    sign = "+"
 elif choice == "s":
-  subtraction()
+    choice = "-"
+    sign = "-"
 elif choice == "m":
-  multiplication()
+    choice = "*"
+    sign = "×"
 elif choice == "d":
-  division()
+    choice = "/"
+    sign = "÷"
 else:
-  print("Please choose a letter ( A , S , M , D")
+    print("Please choose a letter ( A , S , M , D")
+
+# Questions for each maths operation and round
+num_1 = random.randint(1, 20)
+num_2 = random.randint(1, 20)
+
+# generating the question
+print("What is... ")
+question = "{} {} {}  ".format(num_1, choice, num_2)
+print(question)
+
+# Answers
+result = int(input("Answer: "))
+answer = eval(question)
+
+# Incorrect or correct
+
+if result == answer:
+    feedback = "CORRECT"
+    print(feedback)
+else:
+    feedback = "INCORRECT"
+    print(feedback)
+    print("The correct answer was {}".format(answer))
