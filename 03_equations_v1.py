@@ -1,20 +1,38 @@
 # BF Component 2 - Computer generates random questions based on chosen generator
-
 import random
-
-# values
 
 
 # functions
 
+def string_checker(question, to_check):
+    valid = False
+    while not valid:
 
-# main routine
-choice = input("Which one would you like to play with?\n"
-               "A - Addition\n"
-               "S - Subtraction\n"
-               "M - Multiplication\n"
-               "D - Division\n"
-               "= ")
+        response = input(question).lower()
+
+        for item in to_check:
+            if response == item:
+                return response
+            elif response == item[0]:
+                return item
+
+        print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
+        print()
+
+
+# *** Main Routine starts here ***
+
+# lists
+yes_no = ["yes", "no"]
+math_list = ["a", "s", "m", "d"]
+
+# ask user what they want to play with
+choice = string_checker("Which one would you like to play with?\n"
+                        "A - Addition\n"
+                        "S - Subtraction\n"
+                        "M - Multiplication\n"
+                        "D - Division\n"
+                        "= ", math_list).lower()
 
 # associate user choice with correct sign
 if choice == "a":
@@ -30,27 +48,31 @@ elif choice == "d":
     choice = "/"
     sign = "÷"
 else:
-    print("Please choose a letter ( A , S , M , D")
+    print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
+    print()
 
-# Questions for each maths operation and round
-num_1 = random.randint(1, 20)
-num_2 = random.randint(1, 20)
+# loop for tesing purposes
+while choice == choice:  # run 8 times so I can test all possible options, loops for easier testing
+    # Questions for each maths operation and round
+    num_1 = random.randint(1, 20)
+    num_2 = random.randint(1, 20)
 
-# generating the question
-print("What is... ")
-question = "{} {} {}  ".format(num_1, choice, num_2)
-print(question)
+    # generating the question
+    print()
+    print("What is... ")
+    question = "{} {} {}  ".format(num_1, choice, num_2)
+    print(question)
 
-# Answers
-result = int(input("Answer: "))
-answer = eval(question)
+    # Answers
+    result = int(input("Answer: "))
+    answer = eval(question)
 
-# Incorrect or correct
+    # Incorrect or correct
 
-if result == answer:
-    feedback = "CORRECT"
-    print(feedback)
-else:
-    feedback = "INCORRECT"
-    print(feedback)
-    print("The correct answer was {}".format(answer))
+    if result == answer:
+        feedback = "CORRECT"
+        print(feedback)
+    else:
+        feedback = "INCORRECT"
+        print(feedback)
+        print("The correct answer was {}".format(answer))
