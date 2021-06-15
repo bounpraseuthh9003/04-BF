@@ -1,4 +1,6 @@
 # Base component () -
+# Ask users if they have played before. If they say yes, program continues. If they say no, display instructions
+# if they say something else, print error <please say yes or no>
 
 
 #  Makes user choice lowercase and goes through the list and make sure it is a valid response
@@ -39,33 +41,27 @@ def statement_generator(statement, decoration, is_heading=None):
 
     return ""
 
+# Main Routine
+
 # Statement for starting game
 statement_generator("Welcome to the Basic Facts Game", "*")
 print()
 
 # Instructions for new users
 instructions = "**** How To Play ****\n" \
-               "\n" \
-               "For each game you will be asked to...\n" \
-               "- Enter a 'low' and 'high' number. The computer will randomly\n" \
-               "generate a 'secret' number between your two chosen numbers.\n" \
-               "It will use these numbers for all the rounds in a given game.\n" \
-               "- The computer will calculate how many guesses you are allowed\n" \
-               "- enter the number of rounds you want to play\n" \
-               "- guess the secret number\n" \
-               "\n" \
+               "instructions go here\n" \
                "Good Luck!"
 
 # List of valid responses
 yes_no_list = ["yes", "no"]
 scores = []
 
+# Ask users if they have played played before. If users type an invalid response, tell them to enter yes / no
 played_before = choice_checker("Have you played this game before? ", yes_no_list, "Please enter yes / no")
-if played_before == "no":
+if played_before == "no":   # if users have not played before display instructions
     print(instructions)
 else:
     print("Let's play!")
 
 print()
 to_play = input("Press <Enter> to play... ").lower()
-print()
