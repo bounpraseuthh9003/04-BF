@@ -11,7 +11,7 @@ def get_rounds():
 
     valid = False
     while not valid:
-        try:
+        try: # fix  try
             # ask the question
             print()
             response = int(input("How many questions would you like? \n"
