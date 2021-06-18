@@ -1,25 +1,21 @@
 # There will be 10 questions, users should be able to quit anytime using 'xxx' and then display results.
 # Users can also play infinite mode where they can press 'xxx' to quit anytime
 
-# Version 1 - Makes sure the questions chosen by user is valid and is not too low or too high + continuous
+# Version 1 - Makes sure the questions chosen by user is valid and is not too low or too high
 
 
 # Functions
 def get_rounds():
 
-    error = "Please enter an integer more than 0 OR press <Enter> for infinite mode."
+    error = "Please enter an integer that is more than 0"
 
     valid = False
     while not valid:
-        try: # fix  try
+        try:
             # ask the question
             print()
             response = int(input("How many questions would you like? \n"
-                                 "You can press <Enter> for infinite mode \n"
                                  "= "))
-
-            if response == "":
-                return ("continuous")
 
             # if response is higher than 2 say they have asked for that amount of questions with the plural(s)
             if response >= 2:
@@ -36,5 +32,5 @@ def get_rounds():
         except ValueError:
             print(error)
 
+# Main routine
 num_rounds = get_rounds()
-print(num_rounds)
