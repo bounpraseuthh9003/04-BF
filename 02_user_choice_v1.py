@@ -30,11 +30,12 @@ def choice_checker(question):
 
 # Ask user their choice of r / p / s - check if this is valid
 
-
 # print out choice for comparison purposes
-user_choice = choice_checker("Which one would you like to play with?\n"
-                             "1 - Addition\n"
-                             "2 - Subtraction\n"
-                             "3 - Multiplication\n"
-                             "4 - Division\n"
-                             "= ")
+for item in range(0, 8):  # run 8 times so I can test all possible options, loops for easier testing
+    print()
+    user_choice = choice_checker("Which one would you like to play with?\n"
+                                 "1 - Addition\n"
+                                 "2 - Subtraction\n"
+                                 "3 - Multiplication\n"
+                                 "4 - Division\n"
+                                 "= ")
