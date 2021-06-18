@@ -1,80 +1,55 @@
-# BF Component 2 - Computer generates random questions based on chosen generator
-# Version 1
 
-from random import randint
+# Number Checker - round mechanics
 
-# values
-num_1 = ""
-num_2 = ""
 
-# functions
-def addition():
+def check_rounds():
+    while True:
+        response = input("How many questions would you like?: ")
 
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
+        round_error = "Please enter an integer more than 0 OR press <Enter> for infinite mode."
+        if response != "":
+            try:
+                response = int(response)
 
-    print(f"What is {num_1} + {num_2} ?")
-    choice = (input("= "))
+                if response < 1:
+                    print(round_error)
+                    continue
 
-    if int(choice) == num_1 + num_2:
-      print("correct, nice job! keep on playing")
+            except ValueError:
+                print(round_error)
+                continue
+
+        return response
+
+
+# Main routine goes here...
+
+rounds_played = 0
+end_game = "no"
+choose_instruction = "Please choose rock (r), paper (p) or scissors (s)"
+
+rounds = check_rounds()
+
+while end_game == "no":
+
+    # Rounds Heading
+    print()
+    if rounds == "":
+        heading = "Continuous Mode: Round {}".format(rounds_played + 1)
+        print(heading)
+        choose = input("{} or 'xxx' to end: ".format(choose_instruction))
+        if choose == "xxx":
+            break
     else:
-      print(f"Incorrect... the answer is {num_1 + num_2}")
+        heading = "Round {} of {}".format(rounds_played + 1, rounds)
+        print(heading)
+        choose = input(choose_instruction)
+        if rounds_played == rounds - 1:
+            end_game = "yes"
 
-def subtraction():
+    print("You chose {}".format(choose))
 
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
+    rounds_played += 1
 
-    print(f"What is {num_1} - {num_2} ?")
-    choice = (input("= "))
+print("Thank you for playing")
 
-    if int(choice) == num_1 - num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 - num_2}")
-
-def multiplication():
-
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
-
-    print(f"What is {num_1} x {num_2} ?")
-    choice = (input("= "))
-
-    if int(choice) == num_1 * num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 * num_2}")
-
-def division():
-
-    num_1 = randint(0,10)
-    num_2 = randint(0,10)
-
-    print(f"What is {num_1} / {num_2} ?")
-    choice = (input("= "))
-
-    if int(choice) == num_1 / num_2:
-      print("correct, nice job! keep on playing")
-    else:
-      print(f"Incorrect... the answer is {num_1 / num_2}")
-
-# main routine
-choice = input("Which one would you like to play with?\n"
-"A - Addition\n"
-"S - Subtraction\n"
-"M - Multiplication\n"
-"D - Division\n"
-"= ")
-
-if choice == "a":
-  addition()
-elif choice == "s":
-  subtraction()
-elif choice == "m":
-  multiplication()
-elif choice == "d":
-  division()
-else:
-  print("Please choose a letter ( A , S , M , D")
