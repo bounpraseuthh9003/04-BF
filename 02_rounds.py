@@ -1,4 +1,4 @@
-# Component 2 - Rounds mechanics v2, make sure continuous and rounds work
+# Component 2 - Rounds mechanics v1
 
 
 # Function used to check input is valid
@@ -10,6 +10,10 @@ def check_rounds():
 
         round_error = "Please enter an integer that is more than 0 OR press <Enter> for continuous mode "
 
+        # if user response is <Enter> continue with continous mode
+        if response == "":
+            print("continuous")
+
         # if user response is not <Enter> continue with chosen number of questions
         if response != "":
             try:
@@ -20,6 +24,14 @@ def check_rounds():
                     print(round_error)
                     continue
 
+                # if response is higher than 2 say they have asked for that amount of questions with the plural(s)
+                elif response >= 2:
+                    print("You have asked for {} questions ".format(response))
+
+                # if response is 1, say "1 question" instead of "questions"
+                elif response == 1:
+                    print("You have asked for 1 question")
+
             except ValueError:
                 print(round_error)
                 continue
@@ -29,39 +41,5 @@ def check_rounds():
 
 # Main routine goes here
 
-rounds_played = 0
-choose_instructions = "equation\n(any integer - testing)"
-
 # Ask users for # of rounds then loop, <enter> for infinite mode
 rounds = check_rounds()
-
-end_game = "no"
-while end_game == "no":
-
-    # Start of Game Play loop
-
-    # Rounds Heading
-    print()
-    if rounds == "":
-        heading = "Continuous Mode: Round {}".format(rounds_played + 1)
-    else:
-        heading = "Round {} of {}".format(rounds_played + 1, rounds)
-
-    print(heading)
-    choose = input("{} or 'xxx' to end: ".format(choose_instructions))
-
-    # End game if exit code is typed
-    if choose == "xxx":
-        break
-
-    # rest of loop / game
-    print("You chose {}".format(choose))
-
-    rounds_played += 1
-
-    # end game if requested # of rounds has been played
-    if rounds_played == rounds:
-        break
-
-print()
-print("You played {} rounds. Thank you for playing".format(rounds_played))
