@@ -1,40 +1,67 @@
-# There will be 10 questions, users should be able to quit anytime using 'xxx' and then display results.
-# Users can also play infinite mode where they can press 'xxx' to quit anytime
-
-# Version 2 - continuous mode is added
+# Component 2 - Rounds mechanics v2
 
 
-# Functions
-def get_rounds():
+# Function used to check input is valid
+def check_rounds():
+    while True:
+        print()
+        response = input("How many questions would you like?\n"
+                         "Press <Enter> for continuous mode:\n")
 
-    error = "Please enter an integer more than 0 OR press <Enter> for infinite mode."
+        round_error = "Please enter an integer that is more than 0 OR press <Enter> for continuous mode "  # get rid of "more > 0" ?
 
-    valid = False
-    while not valid:
-        try: # fix  try
-            # ask the question
-            print()
-            response = int(input("How many questions would you like? \n"
-                                 "You can press <Enter> for infinite mode \n"
-                                 "= "))
+        # if user response is not <Enter> continue with chosen number of questions
+        if response != "":
+            try:
+                response = int(response)
 
-            if response == "":
-                return ("continuous")
+                # if response less than 1, print error
+                if response < 1:
+                    print(round_error)
+                    continue
 
-            # if response is higher than 2 say they have asked for that amount of questions with the plural(s)
-            if response >= 2:
-                print("You have asked for {} questions ".format(response))
+            except ValueError:
+                print(round_error)
+                continue
 
-            # if response is 1, say "1 question" instead of "questions"
-            elif response == 1:
-                print("You have asked for 1 question")
+        return response
 
-            else:
-                print()
-                print(error)
 
-        except ValueError:
-            print(error)
+# Main routine goes here
 
-num_rounds = get_rounds()
-print(num_rounds)
+rounds_played = 0
+choose_instructions = "equation\n(any integer - testing)"
+
+# Ask users for # of rounds then loop, <enter> for infinite mode
+rounds = check_rounds()
+
+end_game = "no"
+while end_game == "no":
+
+    # Start of Game Play loop
+
+    # Rounds Heading
+    print()
+    if rounds == "":
+        heading = "Continuous Mode: Round {}".format(rounds_played + 1)
+    else:
+        heading = "Round {} of {}".format(rounds_played + 1, rounds)
+
+    print(heading)
+    choose = input("{} or 'xxx' to end: ".format(choose_instructions))
+
+    # End game if exit code is typed
+    if choose == "xxx":
+        break
+
+    # rest of loop / game
+    print("You chose {}".format(choose))
+
+    rounds_played += 1
+
+    # end game if requested # of rounds has been played
+    if rounds_played == rounds:
+        break
+
+print()
+print("You played {} rounds. Thank you for playing".format(rounds_played))
