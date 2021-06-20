@@ -1,4 +1,4 @@
-# Component 2 - Rounds mechanics v2
+# Component 2 - Rounds mechanics v2, make sure continuous and rounds work
 
 
 # Function used to check input is valid
@@ -8,7 +8,7 @@ def check_rounds():
         response = input("How many questions would you like?\n"
                          "Press <Enter> for continuous mode:\n")
 
-        round_error = "Please enter an integer that is more than 0 OR press <Enter> for continuous mode "  # get rid of "more > 0" ?
+        round_error = "Please enter an integer that is more than 0 OR press <Enter> for continuous mode "
 
         # if user response is not <Enter> continue with chosen number of questions
         if response != "":
