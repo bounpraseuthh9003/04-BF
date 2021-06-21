@@ -4,27 +4,33 @@ import random
 
 # functions
 
+# Checks user input (either full word or first letter of word)
 def string_checker(question, to_check):
+
     valid = False
     while not valid:
-
+        # ask user question and change response to lowercase
         response = input(question).lower()
 
+        if response == "xxx":
+            return response
+
+        # check response is in list OR that it's the first letter of an item in the list
         for item in to_check:
             if response == item:
                 return response
             elif response == item[0]:
                 return item
 
-        print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
+        # if item not in list, print error
         print()
-
+        print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
 
 # *** Main Routine starts here ***
 
 # lists
 yes_no = ["yes", "no"]
-math_list = ["a", "s", "m", "d"]
+math_list = ["addition", "subtraction", "multiplication", "division"]
 
 # ask user what they want to play with
 choice = string_checker("Which one would you like to play with?\n"
@@ -37,16 +43,12 @@ choice = string_checker("Which one would you like to play with?\n"
 # associate user choice with correct sign
 if choice == "a":
     choice = "+"
-    sign = "+"
 elif choice == "s":
     choice = "-"
-    sign = "-"
 elif choice == "m":
     choice = "*"
-    sign = "×"
 elif choice == "d":
     choice = "//"
-    sign = "÷"
 else:
     print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
     print()
@@ -64,8 +66,8 @@ for item in range(0, 5):  # testing -  loops for easier testing
         num_2 = random.randint(1, 12)
 
     else:  # how to get / to same as multiplication?
-        num_1 = random.randint(1, 144)
-        num_2 = random.randint(1, 144)
+        num_1 = random.randint(5, 60)
+        num_2 = random.randint(5, 60)
 
     # generating the question
     print()
