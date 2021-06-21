@@ -1,4 +1,4 @@
-# BF Component 2 - Computer generates random questions based on chosen generator
+# BF Component 4 - Computer generates random questions based on chosen generator
 import random
 
 
@@ -45,17 +45,27 @@ elif choice == "m":
     choice = "*"
     sign = "×"
 elif choice == "d":
-    choice = "/"
+    choice = "//"
     sign = "÷"
 else:
     print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
     print()
 
-# loop for tesing purposes
-while choice == choice:  # run 8 times so I can test all possible options, loops for easier testing
+# loop for testing purposes
+for item in range(0, 5):  # testing -  loops for easier testing
+
     # Questions for each maths operation and round
-    num_1 = random.randint(1, 20)
-    num_2 = random.randint(1, 20)
+    if choice == "+" or choice == "-":
+        num_1 = random.randint(1, 20)
+        num_2 = random.randint(1, 20)
+
+    elif choice == "*":
+        num_1 = random.randint(1, 12)
+        num_2 = random.randint(1, 12)
+
+    else:  # how to get / to same as multiplication?
+        num_1 = random.randint(1, 144)
+        num_2 = random.randint(1, 144)
 
     # generating the question
     print()
