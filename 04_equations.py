@@ -2,8 +2,6 @@
 import random
 
 
-# functions
-
 # Checks user input (either full word or first letter of word)
 def string_checker(question, to_check):
 
@@ -23,13 +21,9 @@ def string_checker(question, to_check):
                 return item
 
         # if item not in list, print error
-        print()
-        print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
+        print("sorry that is not a valid response")
 
 # *** Main Routine starts here ***
-
-# lists
-yes_no = ["yes", "no"]
 math_list = ["addition", "subtraction", "multiplication", "division"]
 
 # ask user what they want to play with
@@ -38,7 +32,7 @@ choice = string_checker("Which one would you like to play with?\n"
                         "S - Subtraction\n"
                         "M - Multiplication\n"
                         "D - Division\n"
-                        "= ", math_list).lower()
+                        "= ", math_list)
 
 # associate user choice with correct sign
 if choice == "a":
@@ -49,17 +43,18 @@ elif choice == "m":
     choice = "*"
 elif choice == "d":
     choice = "//"
-else:
-    print("Please choose a valid letter ( A - Addition, S - Subtraction, M - Multiplication, D - Division)")
-    print()
 
 # loop for testing purposes
 for item in range(0, 5):  # testing -  loops for easier testing
 
     # Questions for each maths operation and round
-    if choice == "+" or choice == "-":
+    if choice == "+":
         num_1 = random.randint(1, 20)
         num_2 = random.randint(1, 20)
+
+    elif choice == "-":
+        num_1 = random.choice(1, 20)
+        num_2 = random.randint(1, num_1)
 
     elif choice == "*":
         num_1 = random.randint(1, 12)
