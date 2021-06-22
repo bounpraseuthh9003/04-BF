@@ -24,7 +24,9 @@ def string_checker(question, to_check):
         print("sorry that is not a valid response")
 
 # *** Main Routine starts here ***
-math_list = ["addition", "subtraction", "multiplication", "division"]
+
+# lists
+math_list = ["a", "s", "m", "d"]
 
 # ask user what they want to play with
 choice = string_checker("Which one would you like to play with?\n"
@@ -53,7 +55,7 @@ for item in range(0, 5):  # testing -  loops for easier testing
         num_2 = random.randint(1, 20)
 
     elif choice == "-":
-        num_1 = random.choice(1, 20)
+        num_1 = random.randint(1, 20)
         num_2 = random.randint(1, num_1)
 
     elif choice == "*":
