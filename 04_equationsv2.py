@@ -62,17 +62,16 @@ for item in range(0, 5):  # testing -  loops for easier testing
     print()
     print("What is... ")
     question = "{} {} {} ".format(num_1, choice, num_2)
+    answer = eval(question)
 
     # generating division question
     if choice == "//":
         question = "{} ÷ {} ".format(num_1 * num_2, num_2)
         answer = num_1
 
+    # print question and answer
     print(question)
-
-    # Answers
     result = int(input("Answer: "))
-    answer = eval(question)
 
     # Incorrect or correct
     if result == answer:
