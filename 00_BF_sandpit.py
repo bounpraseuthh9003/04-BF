@@ -26,7 +26,7 @@ def string_checker(question, to_check):
 # *** Main Routine starts here ***
 
 # lists
-math_list = ["a", "s", "m", "d"]
+math_list = ["addition", "subtraction", "multiplication", "division", "+", "-", "x", "*", "/"]
 
 # ask user what they want to play with
 choice = string_checker("Which one would you like to play with?\n"
@@ -37,47 +37,43 @@ choice = string_checker("Which one would you like to play with?\n"
                         "= ", math_list)
 
 # associate user choice with correct sign
-if choice == "a":
+if choice == "addition" or choice == "+":
     choice = "+"
-elif choice == "s":
+elif choice == "subtraction" or choice == "-":
     choice = "-"
-elif choice == "m":
+elif choice == "multiplication" or choice == "x" or choice == "*":
     choice = "*"
-elif choice == "d":
+elif choice == "division" or choice == "/":
     choice = "//"
 
 # loop for testing purposes
 for item in range(0, 5):  # testing -  loops for easier testing
 
     # Questions for each maths operation and round
-    if choice == "+" or choice == "-":
-        num_1 = random.randint(1, 20)
-        num_2 = random.randint(1, 20)
-
-    elif choice == "-":
-        num_1 = random.choice(1, 20)
-        num_2 = random.randint(1, num_1)
-
-    elif choice == "*":
+    if choice == "+" or choice == "*" or choice == "//":
         num_1 = random.randint(1, 12)
         num_2 = random.randint(1, 12)
 
-    else:  # how to get / to same as multiplication?
-        num_1 = random.randint(5, 60)
-        num_2 = random.randint(5, 60)
+    else:
+        num_1 = random.randint(1, 12)
+        num_2 = random.randint(1, num_1)  # second number always less than first number (avoid negative integers)
 
     # generating the question
     print()
     print("What is... ")
-    question = "{} {} {}  ".format(num_1, choice, num_2)
-    print(question)
-
-    # Answers
-    result = int(input("Answer: "))
+    question = "{} {} {} ".format(num_1, choice, num_2)
     answer = eval(question)
 
-    # Incorrect or correct
+    # generating division question
+    if choice == "//":
+        question = "{} ÷ {} ".format(num_1 * num_2, num_2)
+        answer = num_1
 
+    # print question and answer
+    print(question)
+    result = int(input("Answer: "))
+
+    # Incorrect or correct
     if result == answer:
         feedback = "CORRECT"
         print(feedback)
