@@ -69,13 +69,16 @@ for item in range(0, 5):  # testing -  loops for easier testing
         # generating the question for division
         print()
         print("What is... ")
-        division_question = "{} ÷ {} ".format(num_1*num_2,num_2)  # in this code it is just a random number from num_1 and num_2. EX, (N1)6 x (N2)5 = 30. Then we just put it into the equation so it will look like 30 ÷ (N2)5. The correct answer will always be N1(6). This code ensures the bigger number is first avoiding negative integers.
+        division_question = "{} ÷ {} ".format(num_1*num_2,num_2)
+        # in this code it is just a random number from num_1 and num_2. EX, (N1)6 x (N2)5 = 30.
+        # Then we just put it into the equation so it will look like 30 ÷ (N2)5.
+        # The correct answer will always be N1(6). This code ensures the bigger number is first avoiding negative integers.
         print(division_question)
 
         # feedback
         if int(input()) == num_1:
-          feedback = "CORRECT"
-          print(feedback)
+            feedback = "CORRECT"
+            print(feedback)
 
         else:
             feedback = "INCORRECT"
@@ -84,21 +87,21 @@ for item in range(0, 5):  # testing -  loops for easier testing
 
     # generating the question
     if choice == "+" or choice == "-" or choice == "*":
-      print()
-      print("What is... ")
-      question = "{} {} {} ".format(num_1, choice, num_2)
-      print(question)
+        print()
+        print("What is... ")
+        question = "{} {} {} ".format(num_1, choice, num_2)
+        print(question)
 
-      # Answers
-      result = int(input("Answer: "))
-      answer = eval(question)
+        # Answers
+        result = int(input("Answer: "))
+        answer = eval(question)
 
-      # Incorrect or correct
+        # Incorrect or correct
 
-      if result == answer:
-        feedback = "CORRECT"
-        print(feedback)
-      else:
-        feedback = "INCORRECT"
-        print(feedback)
-        print("The correct answer was {}".format(answer))
+        if result == answer:
+            feedback = "CORRECT"
+            print(feedback)
+        else:
+            feedback = "INCORRECT"
+            print(feedback)
+            print("The correct answer was {}".format(answer))
