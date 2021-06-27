@@ -26,7 +26,7 @@ def string_checker(question, to_check):
 # *** Main Routine starts here ***
 
 # lists
-math_list = ["a", "s", "m", "d"]
+math_list = ["addition", "subtraction", "multiplication", "division", "+", "-", "x", "*", "/"]
 
 # ask user what they want to play with
 choice = string_checker("Which one would you like to play with?\n"
@@ -37,13 +37,13 @@ choice = string_checker("Which one would you like to play with?\n"
                         "= ", math_list)
 
 # associate user choice with correct sign
-if choice == "a":
+if choice == "addition" or choice == "+":
     choice = "+"
-elif choice == "s":
+elif choice == "subtraction" or choice == "-":
     choice = "-"
-elif choice == "m":
+elif choice == "multiplication" or choice == "x" or choice == "*":
     choice = "*"
-elif choice == "d":
+elif choice == "division" or choice == "/":
     choice = "//"
 
 # loop for testing purposes
