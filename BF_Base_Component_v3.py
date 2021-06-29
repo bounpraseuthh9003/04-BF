@@ -1,4 +1,5 @@
-# Base Component - Basic Facts Version 3
+  
+# Base Component - Basic Facts Version 2
 
 import random   # import random for numbers
 
@@ -38,7 +39,7 @@ def int_check(question, low=None, high=None, exit_code=None):
             elif situation == "low only ":
                 if response < low:
                     print(
-                        "Please enter a number that is more than (or equal to) {}"
+                        "Plese enter a number that is more than (or equal to) {}"
                         .format(low))
                     continue
 
@@ -168,17 +169,21 @@ while end_game == "no":
     print()
     if rounds == "":
         heading = "Continuous Mode: Round {}".format(rounds_played + 1)
+
+        # increase rounds played by 1 for every round
+        rounds_played += 1
+
     else:
         heading = "Round {} of {}".format(rounds_played + 1, rounds)
 
-        # end game if # of rounds has been played
+        # if rounds played is equal to round game will end
         if rounds_played == rounds - 1:
             end_game = "yes"
 
+        # increase rounds played by 1 for every round
+        rounds_played += 1
+    
     print(heading)
-
-    # rest of loop / game
-    rounds_played += 1  # This must be AFTER the break otherwise the rounds won calculation will be incorrect.
 
     # Questions for each maths operation and round
     num_1 = random.randint(1, 12)
@@ -204,44 +209,43 @@ while end_game == "no":
     print(question)
     result = int_check("Answer: ", exit_code="xxx")
 
-    # Incorrect or correct
-    if result == answer:
-        feedback = "CORRECT"
-        print(feedback)
-        rounds_won += 1
-    else:
-        feedback = "INCORRECT"
-        print(feedback)
-        print("The correct answer was {}".format(answer))
-        rounds_lost += 1
-
     # Break when users enter 'xxx'
     if result == "xxx":
         keep_going = "no"
         break
 
-    games_played = rounds_won + rounds_lost
+    # Incorrect or correct
+    if result == answer:
+        feedback = "CORRECT ( Well done! )"
+        print(feedback)
+        rounds_won += 1
+    else:
+        feedback = "INCORRECT ( The correct answer was {} )".format(answer)
+        print(feedback)
+        rounds_lost += 1
 
     # summary of game (question + answer + feedback)
     round_result = "Question {} = ( {}= {} ): {}  ".format(rounds_played, question, result, feedback)
     game_summary.append(round_result)
 
-    # End of Game Statements
-    print()
-    print('***** End Game Summary *****')
-    print("Correct: {} \t|\t Incorrect: {}".format(rounds_won, rounds_lost))
+# End of Game Statements
+print()
+print('***** End Game Summary *****')
+print("Correct: {} \t|\t Incorrect: {}".format(rounds_won, rounds_lost))
 
-    #  **** Calculate Game Stats ******
-    percent_win = rounds_won / games_played * 100
-    percent_lose = rounds_lost / games_played * 100
+# **** Calculate Game Stats ******
+percent_win = rounds_won / rounds_played * 100
+percent_lose = rounds_lost / rounds_played * 100
 
-    print()
-    print("***** Game Summary *******")
-    for game in game_summary:
-        print(game)
+print()
+print("***** Game Summary *******")
+for game in game_summary:
+  print(game)
 
-    print()
+print()
 
-    # displays game stats with % values to the nearest whole number
-    print("******* Game Statistics ********")
-    print("Correct: {}, ({:.0f}%)\nIncorrect: {}, ({:.0f}%)".format(rounds_won, percent_win, rounds_lost, percent_lose))
+# displays game stats with % values to the nearest whole number
+print("******* Game Statistics ********")
+print("Correct: {}, ({:.0f}%)\nIncorrect: {}, ({:.0f}%)".format(rounds_won, percent_win, rounds_lost, percent_lose))
+
+print("Thank you for playing!!!")
