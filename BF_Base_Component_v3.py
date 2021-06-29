@@ -1,5 +1,5 @@
   
-# Base Component - Basic Facts Version 2
+# Base Component - Basic Facts Version 3
 
 import random   # import random for numbers
 
