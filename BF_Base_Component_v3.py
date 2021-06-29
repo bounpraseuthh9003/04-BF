@@ -1,5 +1,4 @@
-  
-# Base Component - Basic Facts Version 3
+  # Base Component - Basic Facts Version 3
 
 import random   # import random for numbers
 
@@ -168,13 +167,13 @@ while end_game == "no":
     # Rounds Heading
     print()
     if rounds == "":
-        heading = "Continuous Mode: Round {}".format(rounds_played + 1)
+        heading = "---- Continuous Mode: Round {} ----".format(rounds_played + 1)
 
         # increase rounds played by 1 for every round
         rounds_played += 1
 
     else:
-        heading = "Round {} of {}".format(rounds_played + 1, rounds)
+        heading = "---- Round {} of {} ----".format(rounds_played + 1, rounds)
 
         # if rounds played is equal to round game will end
         if rounds_played == rounds - 1:
@@ -183,6 +182,7 @@ while end_game == "no":
         # increase rounds played by 1 for every round
         rounds_played += 1
     
+    # print heading for game mode chosen
     print(heading)
 
     # Questions for each maths operation and round
@@ -217,12 +217,17 @@ while end_game == "no":
     # Incorrect or correct
     if result == answer:
         feedback = "CORRECT ( Well done! )"
-        print(feedback)
+        decoration = "!"
         rounds_won += 1
     else:
-        feedback = "INCORRECT ( The correct answer was {} )".format(answer)
-        print(feedback)
+        feedback = "INCORRECT ( The answer was {} )".format(answer)
+        decoration = "X"
         rounds_lost += 1
+
+    # Output result to user
+    print()
+    statement_generator(feedback, decoration)
+    print()
 
     # summary of game (question + answer + feedback)
     round_result = "Question {} = ( {}= {} ): {}  ".format(rounds_played, question, result, feedback)
